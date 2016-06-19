@@ -5,10 +5,14 @@ package com.giao.checklist;
  */
 public class CheckListBO {
     private String checkListName;
-    public CheckListBO(String checklistName)
+    public CheckListBO()
     {
 
     }
+    public CheckListBO(String checkListName) {
+        this.checkListName = checkListName;
+    }
+
     public String getCheckListName(){return this.checkListName;}
     public void setCheckListName(String checkListName){this.checkListName=checkListName;}
 }
