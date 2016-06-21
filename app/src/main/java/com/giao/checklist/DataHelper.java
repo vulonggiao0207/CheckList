@@ -11,38 +11,22 @@ import android.util.Log;
  * Created by Long on 2/13/2016.
  */
 public class DataHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME="OrderSystem";
-    private static final String TABLE_TABLES="Tables";
-    private static final String TABLE_CATEGORY="Category";
-    private static final String TABLE_ORDER="Orders";
-    private static final String TABLE_ORDERDETAIL="OrderDetail";
-    private static final String TABLE_MENU="Menu";
-    //Tables Table columns
-    public static final String TableName="TableName";
-    //Category Table columns
-    public static final String CategoryName="CategoryName";
-    //Order Table columns
-    public static final String OrderID="OrderID";
-    public static final String Order_TableName="TableName";
-    public static final String OrderDate="OrderDate";
-    public static final String NumberOfCustomer="NumberOfCustomer";
-    public static final String OrderNote="OrderNote";
-    public static final String OrderPaid="OrderPaid";
-    //OrderDetails Table columns
-    public static final String OrderDetailID="OrderDetailID";
-    public static final String OrderDetail_OrderID="OrderID";
-    public static final String OrderDetail_DishID="DishID";
-    public static final String OrderDetails_Quantity="Quantity";
-    public static final String Price="Price";
-    public static final String Note="Note";
-    //Menu Table columns
-    public static final String DishID="DishID";
-    public static final String Dish_CategoryName="CategoryName";
-    public static final String DishName="DishName";
-    public static final String DishPrice="DishPrice";
-    public static final String DishDescription="DishDescription";
-    public static final String DishAvailability="DishAvailability";
-    private static final int DATABASE_VERSION=5;
+    private static final String DATABASE_NAME="CheckList";
+    private static final String TABLE_CHECKLIST="CheckList";
+    private static final String TABLE_CHECKLISTITEM="CheckListItem";
+    private static final String TABLE_ITEMDATE="ItemDate";
+    //CheckList Table columns
+    public static final String CheckListName="CheckListName";
+    //CheckListItem Table columns
+    public static final String ckItemID="ckItemID";
+    public static final String checkListName="checkListName";
+    public static final String ckItemName="ckItemName";
+    //ItemDate Table columns
+    public static final String ckItem_DateID="ckItemID";
+    public static final String ckDate="ckDate";
+    public static final String itemNote="itemNote";
+
+    private static final int DATABASE_VERSION=1;
 
     private static Context context;
     public DataHelper(Context context)
@@ -53,40 +37,25 @@ public class DataHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // TODO Auto-generated method stub
-        String CreateTABLE_TABLES="CREATE TABLE IF NOT EXISTS "+TABLE_TABLES+" ("
-                + TableName+ " TEXT PRIMARY KEY NOT NULL "
+        String CreateTABLE_CHECKLIST="CREATE TABLE IF NOT EXISTS "+TABLE_CHECKLIST+" ("
+                + CheckListName+ " TEXT PRIMARY KEY NOT NULL "
                 +");";
-        String CreateTABLE_CATEGORY="CREATE TABLE IF NOT EXISTS "+TABLE_CATEGORY+" ("
-                + CategoryName+ " TEXT PRIMARY KEY NOT NULL "
+        String CreateTABLE_CHECKLISTITEM="CREATE TABLE IF NOT EXISTS "+TABLE_CHECKLISTITEM+" ("
+                + ckItemID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + checkListName+ " TEXT PRIMARY KEY NOT NULL, "
+                + ckItemName+ " TEXT PRIMARY KEY NOT NULL "
                 +");";
-        String CreateTABLE_ORDER=//"CREATE TABLE IF NOT EXISTS Orders(OrderID INTEGER PRIMARY KEY AUTOINCREMENT, TableName TEXT NOT NULL, OrderDate NUMERIC NOT NULL, NumberOfCustomer INTEGER, OrderNote TEXT, OrderPaid REAL)";
-                "CREATE TABLE IF NOT EXISTS "+TABLE_ORDER+ " ("
-                        +OrderID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + Order_TableName+ " TEXT NOT NULL, "
-                        + OrderDate+ " NUMERIC NOT NULL, "
-                        + NumberOfCustomer+ " INTEGER, "
-                        + OrderNote+ " TEXT, "
-                        + OrderPaid+ " REAL "
+        String CreateTABLE_ITEMDATE=//"CREATE TABLE IF NOT EXISTS Orders(OrderID INTEGER PRIMARY KEY AUTOINCREMENT, TableName TEXT NOT NULL, OrderDate NUMERIC NOT NULL, NumberOfCustomer INTEGER, OrderNote TEXT, OrderPaid REAL)";
+                "CREATE TABLE IF NOT EXISTS "+TABLE_ITEMDATE+ " ("
+                        + ckItem_DateID+ " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + ckDate+ " TEXT PRIMARY KEY NOT NULL, "
+                        + itemNote+ " TEXT PRIMARY KEY NOT NULL "
                         +");";
-        String CreateTABLE_MENU="CREATE TABLE IF NOT EXISTS "+TABLE_MENU+" ("+DishID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + Dish_CategoryName+ " TEXT NOT NULL, "
-                + DishName+ " TEXT NOT NULL, "
-                + DishPrice+ " REAL, "
-                + DishDescription+ " TEXT, "
-                + DishAvailability+ " REAL"
-                +");";
-        String CreateTABLE_ORDERDETAIL="CREATE TABLE IF NOT EXISTS "+TABLE_ORDERDETAIL+" ("+OrderDetailID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + OrderDetail_OrderID+ " INTEGER NOT NULL, "
-                + OrderDetail_DishID+ " INTEGER NOT NULL, "
-                + OrderDetails_Quantity+ " INTEGER NOT NULL, "
-                + Price+ " REAL, "
-                + Note+ " TEXT NOT NULL "
-                +");";
-        db.execSQL(CreateTABLE_TABLES);
-        db.execSQL(CreateTABLE_CATEGORY);
-        db.execSQL(CreateTABLE_ORDER);
-        db.execSQL(CreateTABLE_MENU);
-        db.execSQL(CreateTABLE_ORDERDETAIL);
+
+        db.execSQL(CreateTABLE_CHECKLIST);
+        db.execSQL(CreateTABLE_CHECKLISTITEM);
+        db.execSQL(CreateTABLE_ITEMDATE);
+
 
 
 
@@ -95,11 +64,9 @@ public class DataHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO Auto-generated method stub
  //       Log.w(TableDAO.class.getName(), "Upgrading database from old to new version...");
-        db.execSQL("DROP TABLE IF EXISTs " + TABLE_TABLES);
-        db.execSQL("DROP TABLE IF EXISTs " + TABLE_MENU);
-        db.execSQL("DROP TABLE IF EXISTs " + TABLE_CATEGORY);
-        db.execSQL("DROP TABLE IF EXISTs " + TABLE_ORDER);
-        db.execSQL("DROP TABLE IF EXISTs " + TABLE_ORDERDETAIL);
+        db.execSQL("DROP TABLE IF EXISTs " + TABLE_ITEMDATE);
+        db.execSQL("DROP TABLE IF EXISTs " + TABLE_CHECKLISTITEM);
+        db.execSQL("DROP TABLE IF EXISTs " + TABLE_CHECKLIST);
         onCreate(db);
     }
 

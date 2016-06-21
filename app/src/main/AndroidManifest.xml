@@ -16,13 +16,31 @@
         </activity>
         <activity android:name=".CheckList">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.CheckList" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CheckListManager">
+            <intent-filter>
+                <action android:name="android.intent.action.CheckListManager" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".CheckListItem">
+            <intent-filter>
+                <action android:name="android.intent.action.CheckListItem" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".ItemManager">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.ItemManager" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SendSMS">
+            <intent-filter>
+                <action android:name="android.intent.action.SendSMS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

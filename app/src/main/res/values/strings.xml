@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Check List</string>
+    <string name="quitButton">Quit</string>
 </resources>

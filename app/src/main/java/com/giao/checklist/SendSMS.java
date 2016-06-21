@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * Created by Long on 6/13/2016.
+ * Created by Long on 6/21/2016.
  */
-public class CheckList extends Activity {
+public class SendSMS extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.checklist);
+        setContentView(R.layout.sendsms);
     }
 }
+

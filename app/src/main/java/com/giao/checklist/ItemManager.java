@@ -1,12 +1,12 @@
 package com.giao.checklist;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by Long on 6/13/2016.
  */
-public class ItemManager extends AppCompatActivity {
+public class ItemManager extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
